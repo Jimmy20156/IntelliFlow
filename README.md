@@ -39,7 +39,12 @@ Older versions and release notes are on the [Releases page](https://github.com/J
 To open IntelliFlow later, use the **IntelliFlow** shortcut on the desktop or in the Start menu. It runs in the background: look for the IntelliFlow icon near the clock. Right-click it and choose **Quit** to stop it.
 
 ## Updates
-IntelliFlow checks for updates each time you open it. Small updates install by themselves. When a big update needs a new installer, the start page shows a **Download the new installer** button. Installing over the old version keeps your accounts and manuscripts.
+IntelliFlow checks for updates each time you open it. When a new version is out, a blue **"IntelliFlow x.y.z is available"** bar also shows at the top of the app.
+
+To update, use one of these. Your accounts and manuscripts are always kept.
+- **Usual case:** close IntelliFlow (the IntelliFlow icon near the clock → **Quit IntelliFlow**) and open it again while online. It updates by itself in a few seconds.
+- **If the bar or the start page says "Download the new installer":** download it and run it over the old version.
+- **Any time:** download the latest **IntelliFlow-Setup.exe** above and install it over the old version.
 
 ## Your data
 Your accounts, manuscripts and settings are stored in `%LOCALAPPDATA%\IntelliFlow`. Uninstalling asks whether to keep this folder.
