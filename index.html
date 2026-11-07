@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IntelliFlow</title>
+<meta name="description" content="IntelliFlow: format your capstone paper to IEEE standards. This link always opens the current IntelliFlow server.">
+<style>
+  :root { --bg:#f5f7fb; --card:#fff; --text:#0f172a; --muted:#64748b; --accent:#2563eb; --err:#b91c1c; --line:#e2e8f0; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0b1220; --card:#111a2e; --text:#e2e8f0; --muted:#94a3b8; --accent:#60a5fa; --err:#f87171; --line:#1e293b; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:grid; place-items:center; padding:16px; background:var(--bg); color:var(--text);
+         font:15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .card { width:100%; max-width:440px; background:var(--card); border:1px solid var(--line); border-radius:14px;
+          padding:32px 28px; text-align:center; box-shadow:0 10px 30px rgba(15,23,42,.08); }
+  h1 { margin:0 0 4px; font-size:22px; } h1 span { color:var(--accent); }
+  .spinner { width:36px; height:36px; margin:22px auto 0; border:4px solid var(--line); border-top-color:var(--accent);
+             border-radius:50%; animation:spin .9s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  #msg { margin:18px 0 0; color:var(--muted); }
+  #msg.err { color:var(--err); }
+  a.btn { display:inline-block; margin-top:16px; padding:8px 14px; border-radius:8px; border:1px solid var(--line);
+          color:var(--text); text-decoration:none; font-weight:600; font-size:14px; }
+  .foot { margin-top:22px; font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main class="card">
+  <h1>Intelli<span>Flow</span></h1>
+  <div>IEEE Smart Formatter</div>
+  <div class="spinner" id="spinner"></div>
+  <p id="msg">Opening IntelliFlow…</p>
+  <div id="actions" hidden>
+    <a class="btn" href="" id="retry">Try again</a>
+    <a class="btn" href="https://github.com/Jimmy20156/IntelliFlow">Download the Windows app</a>
+  </div>
+  <p class="foot">Bookmark this page: it always opens the current IntelliFlow server.</p>
+</main>
+<script>
+(function () {
+  // deploy/online.ps1 publishes the server's current link here
+  var src = "server.json?t=" + Date.now();
+  function offline(text) {
+    document.getElementById("spinner").hidden = true;
+    var msg = document.getElementById("msg");
+    msg.textContent = text;
+    msg.className = "err";
+    document.getElementById("actions").hidden = false;
+  }
+  fetch(src, { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (info) {
+      if (!info.url || !/^https:\/\/[a-z0-9.-]+$/i.test(info.url)) throw new Error("no link");
+      // the PC may be off (the link is from its last start): check it answers first
+      var timeout = new Promise(function (_, reject) { setTimeout(function () { reject(new Error("timeout")); }, 10000); });
+      return Promise.race([fetch(info.url + "/login/", { mode: "no-cors", cache: "no-store" }), timeout])
+        .then(function () { window.location.replace(info.url + "/"); });
+    })
+    .catch(function () {
+      offline("IntelliFlow is offline right now. Please try again later.");
+    });
+})();
+</script>
+</body>
+</html>
