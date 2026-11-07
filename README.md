@@ -1,4 +1,4 @@
-# IntelliFlow â€” IEEE Smart Formatter
+# IntelliFlow — IEEE Smart Formatter
 
 IntelliFlow turns your capstone manuscript (PDF) into a two-column **IEEE conference paper**:
 - live preview
@@ -6,9 +6,15 @@ IntelliFlow turns your capstone manuscript (PDF) into a two-column **IEEE confer
 - an IEEE structure guide
 - PDF export
 
-## â¬‡ Download
+## 🌐 Use it online
 
-**[Download IntelliFlow-Setup.exe](https://github.com/Jimmy20156/IntelliFlow/releases/download/v1.0.0/IntelliFlow-Setup.exe)** (version 1.0.0)
+<!-- online-link -->**[Open IntelliFlow online](https://jimmy20156.github.io/IntelliFlow/)**: nothing to install; sign in with your @csucc.edu.ph Google account.<!-- /online-link -->
+
+This link never changes: it always opens the current IntelliFlow server. Bookmark it.
+
+## ⬇ Download
+
+**[Download IntelliFlow-Setup.exe](https://github.com/Jimmy20156/IntelliFlow/releases/download/v1.0.1/IntelliFlow-Setup.exe)** (version 1.0.1)
 
 Older versions and release notes are on the [Releases page](https://github.com/Jimmy20156/IntelliFlow/releases).
 
@@ -20,7 +26,7 @@ Older versions and release notes are on the [Releases page](https://github.com/J
 
 ## Install
 1. Run **IntelliFlow-Setup.exe**.
-   - If Windows SmartScreen says *"Windows protected your PC"*, click **More info â†’ Run anyway**. The installer isn't code-signed.
+   - If Windows SmartScreen says *"Windows protected your PC"*, click **More info → Run anyway**. The installer isn't code-signed.
 2. Create the **administrator account** (username, email, password) when the installer asks.
 3. On the last page, leave **Launch IntelliFlow now** checked and click **Finish**.
 4. Your browser opens. The first start takes up to a minute. Then sign in with the account from step 2. The first time, IntelliFlow asks you to finish setting up the account.
