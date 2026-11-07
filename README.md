@@ -18,7 +18,9 @@ This link never changes: it always opens the current IntelliFlow server. Bookmar
 
 ## ⬇ Download
 
-**[Download IntelliFlow-Setup.exe](https://github.com/Jimmy20156/IntelliFlow/releases/download/v1.0.1/IntelliFlow-Setup.exe)** (version 1.0.1)
+**Latest version: 1.0.2**
+
+**[Download IntelliFlow-Setup.exe](https://github.com/Jimmy20156/IntelliFlow/releases/download/v1.0.1/IntelliFlow-Setup.exe)**. If the installer is from an earlier version, IntelliFlow updates itself to 1.0.2 the first time you open it while online.
 
 Older versions and release notes are on the [Releases page](https://github.com/Jimmy20156/IntelliFlow/releases).
 
