@@ -8,7 +8,11 @@ IntelliFlow turns your capstone manuscript (PDF) into a two-column **IEEE confer
 
 ## 🌐 Use it online
 
-<!-- online-link -->**[Open IntelliFlow online](https://jimmy20156.github.io/IntelliFlow/)**: nothing to install; sign in with your @csucc.edu.ph Google account.<!-- /online-link -->
+<!-- online-link -->
+
+**[Open IntelliFlow online](https://jimmy20156.github.io/IntelliFlow/)**: nothing to install; sign in with your @csucc.edu.ph Google account.
+
+<!-- /online-link -->
 
 This link never changes: it always opens the current IntelliFlow server. Bookmark it.
 
