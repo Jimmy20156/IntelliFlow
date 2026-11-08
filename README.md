@@ -33,9 +33,9 @@ Older versions and release notes are on the [Releases page](https://github.com/J
 ## Install
 1. Run **IntelliFlow-Setup.exe**.
    - If Windows SmartScreen says *"Windows protected your PC"*, click **More info → Run anyway**. The installer isn't code-signed.
-2. Create the **administrator account** (username, email, password) when the installer asks.
+2. Click through the installer. There is nothing to fill in: no account is created during installation.
 3. On the last page, leave **Launch IntelliFlow now** checked and click **Finish**.
-4. Your browser opens. The first start takes up to a minute. Then sign in with the account from step 2. The first time, IntelliFlow asks you to finish setting up the account.
+4. Your browser opens. The first start takes up to a minute. Click **Continue with Google** and use your **@csucc.edu.ph** school account. New here? It creates your account and emails you a code to confirm it.
 5. Go to the **Dashboard** and upload your capstone PDF.
 
 To open IntelliFlow later, use the **IntelliFlow** shortcut on the desktop or in the Start menu. It runs in the background: look for the IntelliFlow icon near the clock. Right-click it and choose **Quit** to stop it.
