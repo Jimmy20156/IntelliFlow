@@ -40,8 +40,7 @@
 </main>
 <script>
 (function () {
-  // deploy/online.ps1 publishes the server's current link here
-  var src = "server.json?t=" + Date.now();
+  // deploy/online.ps1 publishes the server's current link in server.json
   function offline(text) {
     document.getElementById("spinner").hidden = true;
     var msg = document.getElementById("msg");
@@ -49,18 +48,32 @@
     msg.className = "err";
     document.getElementById("actions").hidden = false;
   }
-  fetch(src, { cache: "no-store" })
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (info) {
-      if (!info.url || !/^https:\/\/[a-z0-9.-]+$/i.test(info.url)) throw new Error("no link");
-      // the PC may be off (the link is from its last start): check it answers first
-      var timeout = new Promise(function (_, reject) { setTimeout(function () { reject(new Error("timeout")); }, 10000); });
-      return Promise.race([fetch(info.url + "/login/", { mode: "no-cors", cache: "no-store" }), timeout])
-        .then(function () { window.location.replace(info.url + "/"); });
-    })
-    .catch(function () {
-      offline("IntelliFlow is offline right now. Please try again later.");
-    });
+  var waiting = null;
+
+  function tryOpen() {
+    fetch("server.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (info) {
+        // empty: taken offline on purpose (deploy/online.ps1 -Stop)
+        if (!info.url || !/^https:\/\/[a-z0-9.-]+$/i.test(info.url)) throw new Error("no link");
+        // The PC, the tunnel or Docker may be off. /health/ (app/pages/views.py)
+        // allows this site to read it; Cloudflare's "502 Bad gateway" page
+        // (tunnel on, Docker off) doesn't, so that case fails here too.
+        var timeout = new Promise(function (_, reject) { setTimeout(function () { reject(new Error("timeout")); }, 10000); });
+        return Promise.race([fetch(info.url + "/health/", { mode: "cors", cache: "no-store" }), timeout])
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then(function (health) {
+            if (!health || health.ok !== true) throw new Error("not ok");
+            window.location.replace(info.url + "/");
+          });
+      })
+      .catch(function () {
+        offline("The IntelliFlow server is unavailable right now. It may be restarting or turned off. " +
+                "This page keeps checking and opens IntelliFlow as soon as it's back.");
+        if (!waiting) waiting = setInterval(tryOpen, 30000);
+      });
+  }
+  tryOpen();
 })();
 </script>
 </body>
